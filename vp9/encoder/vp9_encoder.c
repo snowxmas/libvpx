@@ -7763,12 +7763,12 @@ void vp9_apply_encoding_flags(VP9_COMP *cpi, vpx_enc_frame_flags_t flags) {
 void vp9_set_row_mt(VP9_COMP *cpi) {
   // Enable row based multi-threading for supported modes of encoding
   cpi->row_mt = 0;
-  if (((cpi->oxcf.mode == GOOD || cpi->oxcf.mode == BEST) &&
-       cpi->oxcf.speed < 5 && cpi->oxcf.pass == 1) &&
+  if (
+       cpi->oxcf.pass == 1 &&
       cpi->oxcf.row_mt && !cpi->use_svc)
     cpi->row_mt = 1;
 
-  if (cpi->oxcf.mode == GOOD && cpi->oxcf.speed < 5 &&
+  if (
       (cpi->oxcf.pass == 0 || cpi->oxcf.pass == 2) && cpi->oxcf.row_mt &&
       !cpi->use_svc)
     cpi->row_mt = 1;
